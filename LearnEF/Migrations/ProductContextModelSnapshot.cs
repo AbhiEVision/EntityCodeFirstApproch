@@ -37,6 +37,18 @@ namespace LearnEF.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Health"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Beauty"
+                        });
                 });
 
             modelBuilder.Entity("LearnEF.Models.Product", b =>

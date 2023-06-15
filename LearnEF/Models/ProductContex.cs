@@ -1,3 +1,4 @@
+using LearnEF.Seeding;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearnEF.Models
@@ -12,7 +13,14 @@ namespace LearnEF.Models
 		{
 			optionsBuilder.UseSqlServer(
 				"Data Source=SF-CPU-523;Initial Catalog=Product_Management;User ID=sa;Password=Abhi@15042002;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+
 		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfiguration(new CategorySeed());
+		}
+
 
 	}
 }

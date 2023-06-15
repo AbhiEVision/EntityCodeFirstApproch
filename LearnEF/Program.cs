@@ -1,4 +1,5 @@
 ﻿using LearnEF.Models;
+using System.Data.Common;
 
 namespace LearnEF
 {
@@ -6,6 +7,9 @@ namespace LearnEF
 	{
 		static void Main(string[] args)
 		{
+
+			
+
 			ProductContext db = new();
 
 			db.SaveChangesFailed += Db_SaveChangesFailed;
