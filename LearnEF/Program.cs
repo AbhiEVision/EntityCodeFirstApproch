@@ -10,8 +10,54 @@ namespace LearnEF
 
 			db.SaveChangesFailed += Db_SaveChangesFailed;
 			db.SavingChanges += Db_SavingChanges;
+			bool exit = true;
+			while (exit)
+			{
+				Console.WriteLine("What do you want!");
+				Console.WriteLine("1. see product!");
+				Console.WriteLine("2. see category!");
+				Console.WriteLine("3. update product!");
+				Console.WriteLine("4. delete product!");
+				Console.WriteLine("5. Add Category!");
+				Console.WriteLine("6. clear console!");
+				Console.WriteLine("7. exit!");
 
-			UpdateProduct(db);
+
+				int test = Convert.ToInt32(Console.ReadLine());
+
+				switch (test)
+				{
+					case 0:
+						Console.WriteLine("Fuck!");
+						break;
+					case 1:
+						ShowProducts(db);
+						break;
+					case 2:
+						ShowCategories(db);
+						break;
+					case 3:
+						UpdateProduct(db);
+						break;
+					case 4:
+						RemoveProduct(db);
+						break;
+					case 5:
+						AddCategory(db);
+						break;
+					case 6:
+						Console.Clear();
+						break;
+					case 7:
+						exit = false;
+						break;
+					default:
+						Console.WriteLine("Fucker enter valid value!");
+						break;
+				}
+
+
+			}
 
 			db.SaveChangesFailed -= Db_SaveChangesFailed;
 			db.SavingChanges -= Db_SavingChanges;
