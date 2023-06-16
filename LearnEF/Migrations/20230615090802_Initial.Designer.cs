@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnEF.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20230615084050_InitialMiration")]
-    partial class InitialMiration
+    [Migration("20230615090802_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,29 @@ namespace LearnEF.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1001,
+                            CategoryID = 1,
+                            Name = "Product1",
+                            Price = 100001
+                        },
+                        new
+                        {
+                            ID = 1003,
+                            CategoryID = 1,
+                            Name = "Product3",
+                            Price = 3001
+                        },
+                        new
+                        {
+                            ID = 1002,
+                            CategoryID = 2,
+                            Name = "Product2",
+                            Price = 200001
+                        });
                 });
 
             modelBuilder.Entity("LearnEF.Models.Product", b =>

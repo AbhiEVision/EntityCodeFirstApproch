@@ -1,5 +1,4 @@
 ﻿using LearnEF.Models;
-using System.Data.Common;
 
 namespace LearnEF
 {
@@ -8,66 +7,24 @@ namespace LearnEF
 		static void Main(string[] args)
 		{
 
-			
-
 			ProductContext db = new();
 
 			db.SaveChangesFailed += Db_SaveChangesFailed;
 			db.SavingChanges += Db_SavingChanges;
-			bool exit = true;
-			while (exit)
-			{
-				Console.WriteLine("What do you want!");
-				Console.WriteLine("1. see product!");
-				Console.WriteLine("2. see category!");
-				Console.WriteLine("3. update product!");
-				Console.WriteLine("4. delete product!");
-				Console.WriteLine("5. Add Category!");
-				Console.WriteLine("6. clear console!");
-				Console.WriteLine("7. exit!");
 
+			//StartUp(db);
 
-				int test = Convert.ToInt32(Console.ReadLine());
-
-				switch (test)
-				{
-					case 0:
-						Console.WriteLine("Fuck!");
-						break;
-					case 1:
-						ShowProducts(db);
-						break;
-					case 2:
-						ShowCategories(db);
-						break;
-					case 3:
-						UpdateProduct(db);
-						break;
-					case 4:
-						RemoveProduct(db);
-						break;
-					case 5:
-						AddCategory(db);
-						break;
-					case 6:
-						Console.Clear();
-						break;
-					case 7:
-						exit = false;
-						break;
-					default:
-						Console.WriteLine("Fucker enter valid value!");
-						break;
-				}
-
-
-			}
 
 			db.SaveChangesFailed -= Db_SaveChangesFailed;
 			db.SavingChanges -= Db_SavingChanges;
 
 		}
 
+
+
+
+
+		#region All CRUD Functions 
 		private static void UpdateProduct(ProductContext db)
 		{
 			ShowProducts(db);
@@ -142,17 +99,17 @@ namespace LearnEF
 
 		public static void ShowProducts(ProductContext db)
 		{
-			if (db.Products.Count() != 0)
+			//if (db.Products.Count() != 0)
+			//{
+			foreach (var item in db.Products)
 			{
-				foreach (var item in db.Products)
-				{
-					Console.WriteLine($"Product ID {item.ID}  \t Product Name : {item.Name} \t Category : {item.CategoryID} \t price : {item.Price}");
-				}
+				Console.WriteLine($"Product ID {item.ID}  \t Product Name : {item.Name} \t Category : {item.CategoryID} \t price : {item.Price}");
 			}
-			else
-			{
-				Console.WriteLine("No Product is available");
-			}
+			//}
+			//else
+			//{
+			//	Console.WriteLine("No Product is available");
+			//}
 
 		}
 
@@ -239,5 +196,59 @@ namespace LearnEF
 			}
 		}
 
+		public static void StartUp(ProductContext db)
+		{
+			bool exit = true;
+			while (exit)
+			{
+				Console.WriteLine("What do you want!");
+				Console.WriteLine("1. see product!");
+				Console.WriteLine("2. see category!");
+				Console.WriteLine("3. update product!");
+				Console.WriteLine("4. delete product!");
+				Console.WriteLine("5. Add Category!");
+				Console.WriteLine("6. clear console!");
+				Console.WriteLine("7. exit!");
+
+
+				int test = Convert.ToInt32(Console.ReadLine());
+
+				switch (test)
+				{
+					case 0:
+						Console.WriteLine("Fuck!");
+						break;
+					case 1:
+						ShowProducts(db);
+						break;
+					case 2:
+						ShowCategories(db);
+						break;
+					case 3:
+						UpdateProduct(db);
+						break;
+					case 4:
+						RemoveProduct(db);
+						break;
+					case 5:
+						AddCategory(db);
+						break;
+					case 6:
+						Console.Clear();
+						break;
+					case 7:
+						exit = false;
+						break;
+					default:
+						Console.WriteLine("Fucker enter valid value!");
+						break;
+				}
+
+
+			}
+		}
+
+
+		#endregion
 	}
 }

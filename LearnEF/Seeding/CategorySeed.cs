@@ -10,11 +10,16 @@ namespace LearnEF.Seeding
 		{
 			builder.Property(x => x.CategoryName).IsRequired().HasMaxLength(100);
 
+			
+
 			builder.HasData
 				(
 					new Category() { CategoryId = 1, CategoryName = "Health" },
-					new Category() { CategoryId =2, CategoryName = "Beauty"}
+					new Category() { CategoryId = 2, CategoryName = "Beauty" }
 				);
 		}
 	}
+
+
+
 }
